@@ -5,8 +5,12 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const BULLET = preload("res://scenes/bullet.tscn")
+@onready var flash_red_timer: Timer = $FlashRedTimer
 var hp = 100
 #var shoot_direction = Vector2.RIGHT
+
+func _ready():
+	AutoloadScript.player_hit.connect(flash_red)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -50,4 +54,18 @@ func shoot():
 		var player_position = global_position
 		get_tree().get_root().get_node("World").get_node("player_projectile").add_child(bullet)
 		bullet.position = player_position
+
+func reset_flash():
+	sprite_2d.modulate = Color(1, 1, 1) 
+
+func flash_red():
+	#print("flashing red")
+	#flash_red_timer.start()
+	sprite_2d.modulate = Color(1, 0, 0)  # Change sprite color to red
+	flash_red_timer.start()
+	#fdlash_red_timer.start() 
 		
+
+
+func _on_flash_red_timer_timeout() -> void:
+	sprite_2d.modulate = Color(1, 1, 1)

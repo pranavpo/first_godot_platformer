@@ -20,7 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.hits > 1:
 			body.hits -= 1
 		else:
-			disable_enemy_collider(body) 
 			body.queue_free()  # Free the enemy
 		queue_free()  # Free the bullet
 		
@@ -28,8 +27,3 @@ func _on_body_entered(body: Node2D) -> void:
 		if(body.position.y >= body.initial_position.y):
 			body.position.y -= 10
 		queue_free()
-		
-func disable_enemy_collider(enemy: Node2D) -> void:
-	var collider = enemy.get_node("CollisionShape2D")  # Access the enemy's collider
-	if collider:
-		collider.disabled = true  # Disable the collider, so it no longer collides

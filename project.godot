@@ -15,11 +15,15 @@ run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AutoloadScript="*res://scripts/autoload_script.gd"
+
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/resizable=false
+window/size/mode=1
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://crosshair.png"
 

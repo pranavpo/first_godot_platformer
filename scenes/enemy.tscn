@@ -20,7 +20,7 @@ shape = SubResource("CircleShape2D_4rqjd")
 wait_time = 0.25
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
