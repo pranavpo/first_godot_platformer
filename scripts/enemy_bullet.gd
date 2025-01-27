@@ -12,9 +12,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	move_area(delta)
 
+func round_vector_to_zero_or_one(v: Vector2) -> Vector2:
+	return Vector2(round(v.x), round(v.y))
 # Move the Area2D in the specified direction.
 func move_area(delta: float) -> void:
-	global_position += direction * speed * delta
+	global_position += round_vector_to_zero_or_one(direction) * speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -34,15 +34,8 @@ func spawn_enemy():
 		randf_range(spawn_area_min_x, spawn_area_max_x),  # Random X position between -80 and 640
 		randf_range(spawn_area_min_y, spawn_area_max_y)   # Random Y position just above the player
 	)
-	#print("Spawning enemy at:", random_position)
-	
-	# Instance the enemy
 	var enemy = enemy_scene.instantiate()
-	
-	# Set the position of the enemy
 	enemy.position = random_position
-	
-	# Add the enemy to the world node (or to the parent node where enemies are stored)
 	add_child(enemy)
 
 # Timer timeout signal callback
