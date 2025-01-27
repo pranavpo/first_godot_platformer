@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://crkjxh15t3dxk"]
+
+[ext_resource type="Script" path="res://scripts/floor.gd" id="1_8jppq"]
+[ext_resource type="Texture2D" uid="uid://dxp7vg2a8oma4" path="res://art/Ground.png" id="1_el2tt"]
+
+[node name="Floor" type="AnimatableBody2D" groups=["floor"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_8jppq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_el2tt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-264.667, 238, -248.667, 121.333, -220.667, 50, -194, 30, -172.667, 15.3333, -149.333, 6, -124, 6, -120.667, 7.33333, -78.6667, 8, -74, 4, -19.3333, 4, -16.6667, 6.66667, 143.333, 8, 148.667, 6, 167.333, 11.3333, 192.667, 29.3333, 210.667, 52, 225.333, 81.3333, 238.667, 126.667, 248, 166.667, 252, 198.667, 262, 241.333)
+
+[node name="FallTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FallTimer" to="." method="_on_fall_timer_timeout"]

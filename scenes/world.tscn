@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://sb7v10bmflcj"]
+
+[ext_resource type="PackedScene" uid="uid://crkjxh15t3dxk" path="res://scenes/floor.tscn" id="1_kfy8u"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_n4qgu"]
+[ext_resource type="PackedScene" uid="uid://dw6tsas2mxtwa" path="res://scenes/player.tscn" id="2_w20gf"]
+[ext_resource type="PackedScene" uid="uid://bjrahid0o361o" path="res://scenes/enemy.tscn" id="3_un7ud"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_n4qgu")
+
+[node name="Floor" parent="." instance=ExtResource("1_kfy8u")]
+position = Vector2(339, 159)
+
+[node name="Player" parent="." instance=ExtResource("2_w20gf")]
+position = Vector2(230, 122)
+
+[node name="Enemy" parent="." instance=ExtResource("3_un7ud")]
+position = Vector2(407, 122)
+
+[node name="player_projectile" type="Node" parent="."]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DeadEnemyTimer" type="Timer" parent="."]
+
+[node name="enemy_projectile" type="Node" parent="."]
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
