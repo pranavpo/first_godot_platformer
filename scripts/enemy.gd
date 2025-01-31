@@ -8,12 +8,15 @@ const JUMP_VELOCITY = -400.0
 @onready var turn_timer: Timer = $TurnTimer
 @onready var direction = Vector2.ZERO
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var healthbar: ProgressBar = $Healthbar
+
 const bullet_scene = preload("res://scenes/enemy_bullet.tscn")
 var hits = 3
 var left_limit = 0
 var right_limit = 640
 func _ready():
 	_update_player_direction()
+	healthbar.init_health(hits)
 	# Start the timer when the enemy is ready
 	turn_timer.start()  
 	shoot_timer.start()
@@ -39,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		global_position.x += SPEED * delta  # Use SPEED for movement
 		sprite_2d.flip_h = true
 	
+	healthbar.health = hits
 	# Apply sliding physics
 	move_and_slide()
 	

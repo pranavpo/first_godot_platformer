@@ -6,10 +6,12 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const BULLET = preload("res://scenes/bullet.tscn")
 @onready var flash_red_timer: Timer = $FlashRedTimer
+@onready var healthbar: ProgressBar = $Healthbar
 var hp = 100
 #var shoot_direction = Vector2.RIGHT
 
 func _ready():
+	healthbar.init_health(hp)
 	AutoloadScript.player_hit.connect(flash_red)
 
 func _physics_process(delta: float) -> void:
@@ -29,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	healthbar.health = hp
 	mouse_cursor()
 	shoot()
 	move_and_slide()

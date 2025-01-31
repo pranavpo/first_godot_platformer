@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjrahid0o361o"]
+[gd_scene load_steps=5 format=3 uid="uid://bjrahid0o361o"]
 
 [ext_resource type="Texture2D" uid="uid://cdvvx5haaicge" path="res://art/enemy.png" id="1_7dyok"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_okfhp"]
+[ext_resource type="PackedScene" uid="uid://dakhg0scqrj20" path="res://scenes/healthbar.tscn" id="3_ake06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rqjd"]
 radius = 9.05539
@@ -22,6 +23,12 @@ wait_time = 0.25
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Healthbar" parent="." instance=ExtResource("3_ake06")]
+offset_left = -16.5
+offset_top = -25.5
+offset_right = 11.5
+offset_bottom = -20.5
 
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
